@@ -1,0 +1,14 @@
+[Unit]
+Description=camera
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+LimitNOFILE=32768
+WorkingDirectory=/opt/camera-service
+Environment=C_FORCE_ROOT='true'
+ExecStart=/opt/camera-service/camera_service_linux
+Restart=always

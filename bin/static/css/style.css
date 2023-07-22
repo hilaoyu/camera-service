@@ -1,0 +1,9 @@
+.container , .container-lg{
+    max-width: 100%;
+    width: 100%;
+}
+.required:after {
+    color: red;
+    content: "*";
+    position: absolute;
+}

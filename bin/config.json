@@ -1,0 +1,15 @@
+{
+  "cameraDeviceID": "0",
+  "cameraFrameHeight": 480,
+  "cameraFrameWidth": 600,
+  "cameraFPS": 20,
+  "mjpegServerListenAddr": "127.0.0.1:8080",
+  "mjpegServerStreamPath": "camera",
+  "recordSavePath": "/home/www/record",
+  "recordSaveName": "camera",
+  "recordCheckDefault": false,
+  "recordCheckHasFace": true,
+  "recordCheckHasMotion": true,
+  "recordStartCheckIntervalSeconds": 3,
+  "recordStopByCheckFailMaxTimes": 40
+}
