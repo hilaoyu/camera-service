@@ -17,6 +17,7 @@ var (
 	RecordWithOutCheck                bool
 	RecordCheckHasFace                bool
 	RecordCheckHasMotion              bool
+	CheckerDrawMark                   bool
 	RecordStartCheckIntervalSeconds   int
 	RecordStopByCheckFailMaxTimes     int
 	RecordWriteNewFileIntervalMinutes int64
@@ -37,6 +38,7 @@ func Init() {
 	RecordWithOutCheck = beego.AppConfig.DefaultBool("camera::recordWithOutCheck", false)
 	RecordCheckHasFace = beego.AppConfig.DefaultBool("camera::recordCheckHasFace", false)
 	RecordCheckHasMotion = beego.AppConfig.DefaultBool("camera::recordCheckHasMotion", false)
+	CheckerDrawMark = beego.AppConfig.DefaultBool("camera::checkerDrawMark", false)
 	RecordStartCheckIntervalSeconds = beego.AppConfig.DefaultInt("camera::recordStartCheckIntervalSeconds", 3)
 	RecordWriteNewFileIntervalMinutes = beego.AppConfig.DefaultInt64("camera::recordWriteNewFileIntervalMinutes", 10)
 	RecordStopByCheckFailMaxTimes = beego.AppConfig.DefaultInt("camera::recordStopByCheckFailMaxTimes", 40)

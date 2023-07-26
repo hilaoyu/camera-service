@@ -30,6 +30,7 @@ func (c *Webcam) OpenCamera(deviceID interface{}) (err error) {
 }
 
 func (c *Webcam) IsAvailable() bool {
+
 	return nil != c.camera
 }
 

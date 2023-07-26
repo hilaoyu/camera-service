@@ -143,10 +143,12 @@ func (r *Recorder) WriteRecord(img gocv.Mat) (err error) {
 	return r.writer.Write(img)
 }
 
-func (r *Recorder) Send(img gocv.Mat) (err error) {
+func (r *Recorder) Send(img gocv.Mat) (error, gocv.Mat) {
+	chackPassed := false
 	select {
 	case <-r.checkTimer.C:
-		if RecordChecker.Check(img) {
+		chackPassed, img = RecordChecker.Check(img)
+		if chackPassed {
 			r.StartRecord()
 			r.checkFailedTimes = 0
 			//fmt.Println("checker true")
@@ -166,10 +168,10 @@ func (r *Recorder) Send(img gocv.Mat) (err error) {
 	}
 	if nil == r.writer {
 		//fmt.Println("writer is nil")
-		return
+		return nil, img
 	}
 	//fmt.Println(fmt.Sprintf("record img %d x%d", img.Cols(), img.Rows()))
-	return r.writer.Write(img)
+	return r.writer.Write(img), img
 }
 
 func (r *Recorder) StopRecord() {

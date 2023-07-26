@@ -7,8 +7,7 @@ import (
 )
 
 type MjpegStreamService struct {
-	stream   *mjpeg.Stream
-	mjpegBuf *gocv.NativeByteBuffer
+	stream *mjpeg.Stream
 }
 
 var (
@@ -27,9 +26,10 @@ func NewMjpegStreamService() (server *MjpegStreamService) {
 
 func (s *MjpegStreamService) Send(img gocv.Mat) {
 	//fmt.Println(fmt.Sprintf("mjpeg send img %d x%d", img.Cols(), img.Rows()))
-	s.mjpegBuf, _ = gocv.IMEncode(".jpg", img)
-	s.stream.UpdateJPEG(s.mjpegBuf.GetBytes())
-	//server.mjpegBuf.Close()
+	mjpegBuf, _ := gocv.IMEncode(".jpg", img)
+	defer mjpegBuf.Close()
+	s.stream.UpdateJPEG(mjpegBuf.GetBytes())
+
 }
 
 func (s *MjpegStreamService) ServeHTTP(w http.ResponseWriter, r *http.Request) {
